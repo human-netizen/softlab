@@ -1,17 +1,23 @@
 public class ShapeFactory {
-    private static Shape ins = null;
+    private static ShapeFactory ins = null;
     private ShapeFactory(){}
 
-    public static Shape getShape(String shapeType){
-        if(ins != null)return ins;
+    public Shape getShape(String shapeType){
+
         if(shapeType == null){
             return null;
         }
         if(shapeType.equalsIgnoreCase("RECTANGLE")){
-            ins = new Rectangle();
+            return new Rectangle();
         } else if(shapeType.equalsIgnoreCase("SQUARE")){
-            ins =  new Square();
+            return new Square();
         }
+        return null;
+    }
+    public static ShapeFactory getInstance()
+    {
+        if (ins == null)
+            ins = new ShapeFactory();
         return ins;
     }
 }
